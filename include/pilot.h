@@ -9,7 +9,7 @@
 class Pilot {
 public:
     Pilot(std::string name, int skill);
-       
+    
     const std::string& name() const;
     int skill() const;                    ///< 1 (rookie) to 100 (ace)
     int fatigue() const;    ///< 0 (rested) to 100 (exhausted)
@@ -20,6 +20,8 @@ public:
     void print() const;
     
     void change_skill(int amount);
+
+    bool set_name(const std::string& name);
 
 private:
     std::string name_;

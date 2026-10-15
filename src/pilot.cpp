@@ -7,7 +7,28 @@ Pilot::Pilot(std::string name, int skill)
     skill_(skill),
     fatigue_(0),
     missions_(0) {
-    }
+    
+
+    if (name_.empty()) {
+        name_ = "Unamed";
+        }
+
+    if (skill_ < 1) {
+        skill_ = 1;
+        }
+        else if (skill_ > 100) {
+            skill_ = 100;
+            }
+}
+
+bool Pilot::set_name(const std::string& name){
+    if(name.empty()) {
+        return false;
+        }
+
+        name_ = name;
+        return true;
+        }
 
 const std::string& Pilot::name() const {
     return name_;
@@ -27,7 +48,13 @@ int Pilot::missions() const {
 
 void Pilot::change_skill(int amount) {
     skill_ += amount;
-    }
+    
+    if(skill_ < 1) {
+        skill_ = 1;
+        } else if (skill_ > 100) {
+            skill_ = 100;
+            }
+}
 
 void Pilot::rest() {
     fatigue_ -= 30;
